@@ -12,7 +12,9 @@ Where the game will be available
 
 - If you publish the repo as a GitHub Pages user site (default behaviour for `nwhator.github.io`), the game will be available at:
 
-  https://nwhator.github.io/tetris/
+- If you publish the repo as a GitHub Pages user site (default behaviour for `nwhator.github.io`), the game will be available at:
+
+- [https://nwhator.github.io/tetris/](https://nwhator.github.io/tetris/)
 
 If you intended to use a custom domain (`stormyhub.me`) restore the `CNAME` by renaming `CNAME.bak` back to `CNAME` and ensure your DNS is configured to point to GitHub Pages.
 
@@ -31,6 +33,50 @@ You can serve the `docs` folder locally to test the game in a browser (I started
 python -m http.server 8000 --directory docs
 # then open http://localhost:8000/tetris
 ```
+
+How it'll be set (concise)
+
+There are two ways this repository can serve the game from the `main` branch under the `/tetris` path. Pick one depending on whether you want a build step (Astro) or a direct static deployment.
+
+1) Immediate static (no build step)
+
+- I copied the playable game into `docs/tetris/`. When GitHub Pages is configured to serve from branch `main` and folder `/docs`, the `docs/` content is published as the site root. That means `docs/tetris/index.html` is immediately available at `/tetris` after the Pages deployment finishes.
+- Steps to publish this way:
+  1. Confirm the repository name is `nwhator.github.io` (it is), or in Pages choose the repository's Pages source as `main` + folder `/docs`.
+  2. Push the `docs/` contents to `main` (if not already pushed).
+  3. GitHub Pages will publish `docs/` → the game appears at `/tetris`.
+
+2) Astro build workflow (recommended if you want a dev server, hot reload, or site structure)
+
+- The repo now includes a minimal Astro scaffold. The Astro project serves `public/` as static assets and builds into `docs/` (see `astro.config.mjs` with `outDir: 'docs'`). Use this if you want to edit in `public/tetris` and run a local dev server.
+- Typical workflow:
+  1. Work in `public/tetris/` (assets and game files).
+  2. Install and run the dev server locally:
+     ```bash
+     npm install
+     npm run dev    # visit http://localhost:3000/tetris
+     ```
+  3. When ready to publish, run:
+     ```bash
+     npm run build  # writes built site to ./docs
+     ```
+  4. Commit and push the updated `docs/` to `main` (Pages will publish it).
+
+Notes about the `CNAME` / custom domain
+
+- A backup of your previous `CNAME` was saved to `CNAME.bak` (it contained `stormyhub.me`). If you want the GitHub Pages site to use the GitHub domain `nwhator.github.io`, leave `CNAME` removed as I did. If you want the custom domain, restore `CNAME.bak` to `CNAME` and ensure DNS points to GitHub Pages.
+
+Commands to publish from your machine
+
+```bash
+# ensure changes are in the repo
+git add .
+git commit -m "Publish tetris to docs/ and add Astro scaffold"
+git push origin main
+```
+
+After pushing, visit the Pages settings (Repository → Settings → Pages) and confirm the Source is `main` branch and the folder is `/docs`.
+
 
 Astro dev & build (optional)
 If you want to use the Astro scaffold I added, install and run it locally:
