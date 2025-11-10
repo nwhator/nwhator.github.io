@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="240" viewBox="0 0 480 240" role="img" aria-label="Tetris preview">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#0ea5a4"/>
+      <stop offset="1" stop-color="#06b6d4"/>
+    </linearGradient>
+    <style>
+      .bg{fill:#071229}
+      .frame{fill:#071229;stroke:#0ea5a4;stroke-opacity:0.12;}
+      .block{rx:3;stroke:#021226;stroke-width:2}
+      .title{font:700 20px/1.1 Inter,Segoe UI,Roboto,Arial,sans-serif;fill:#e6eef8}
+      .sub{font:500 12px Inter,Segoe UI,Roboto,Arial,sans-serif;fill:#94a3b8}
+    </style>
+  </defs>
+  <rect width="100%" height="100%" class="bg" rx="8"/>
+  <rect x="16" y="16" width="200" height="208" fill="#0b1b2b" rx="6"/>
+
+  <!-- Tetris blocks (static preview) -->
+  <g transform="translate(28,28)">
+    <rect x="0" y="0" width="36" height="36" fill="#ff6b6b" class="block"/>
+    <rect x="36" y="0" width="36" height="36" fill="#ff6b6b" class="block"/>
+    <rect x="72" y="0" width="36" height="36" fill="#ff6b6b" class="block"/>
+
+    <rect x="72" y="36" width="36" height="36" fill="#ffd166" class="block"/>
+
+    <rect x="0" y="72" width="36" height="36" fill="#66f0a3" class="block"/>
+    <rect x="36" y="72" width="36" height="36" fill="#66f0a3" class="block"/>
+
+    <rect x="108" y="72" width="36" height="36" fill="#a78bfa" class="block"/>
+    <rect x="108" y="36" width="36" height="36" fill="#a78bfa" class="block"/>
+
+    <rect x="36" y="108" width="36" height="36" fill="#ffb86b" class="block"/>
+  </g>
+
+  <!-- info and CTA -->
+  <g transform="translate(232,32)">
+    <text x="0" y="0" class="title">Play Tetris ▶</text>
+    <text x="0" y="28" class="sub">Click to open the game (GitHub Pages)</text>
+    <rect x="0" y="44" width="180" height="36" rx="6" fill="url(#g)"/>
+    <text x="12" y="68" class="title">Open game</text>
+  </g>
+
+</svg>

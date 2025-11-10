@@ -1,3 +1,4 @@
+// Copied and slightly adapted tetris.js to run from /tetris/ path
 const canvas = document.getElementById('tetris');
 const ctx = canvas.getContext('2d');
 const nextCanvas = document.getElementById('next');

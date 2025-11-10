@@ -1,16 +1,18 @@
 # nwhator.github.io — Publishing & Game
 
-This repository is a GitHub Pages user site. The `docs/` folder contains a small Tetris game at `docs/game/index.html`.
+This repository is a GitHub Pages user site. The `docs/` folder now contains a Tetris game at `docs/tetris/index.html` (the project was moved to the `/tetris` path).
 
 What I changed for you
 
-- Enhanced the Tetris game with a next-piece preview, pause/resume, high-DPI scaling and mobile touch controls.
+- Backed up the existing `CNAME` to `CNAME.bak` (it contained `stormyhub.me`) and removed the active `CNAME` so GitHub Pages will use the GitHub domain by default.
+- Created a minimal Astro scaffold (builds to `docs/`) and copied the game into `public/tetris` so it will be available at `/tetris` after building. I also copied the game into `docs/tetris` so the site will serve from `docs/` immediately.
+- Improved the Tetris game with: next-piece preview, pause/resume, high-DPI scaling, a bag-based piece generator (better randomness), and basic touch controls.
 
 Where the game will be available
 
 - If you publish the repo as a GitHub Pages user site (default behaviour for `nwhator.github.io`), the game will be available at:
 
-  <https://nwhator.github.io/game/>
+  https://nwhator.github.io/tetris/
 
 If you intended to use a custom domain (`stormyhub.me`) restore the `CNAME` by renaming `CNAME.bak` back to `CNAME` and ensure your DNS is configured to point to GitHub Pages.
 
@@ -23,14 +25,23 @@ How to publish (GitHub Pages settings)
 3. Save. GitHub will queue a deployment; after a minute the site should become available.
 
 Local testing
-You can serve the `docs` folder locally to test the game in a browser:
+You can serve the `docs` folder locally to test the game in a browser (I started a server in the workspace already):
 
 ```bash
 python -m http.server 8000 --directory docs
-# then open http://localhost:8000/game
+# then open http://localhost:8000/tetris
 ```
 
-If you want me to push these changes (create a commit and push to `main`) I can do that for you — tell me and I'll create a small commit with a useful message.
+Astro dev & build (optional)
+If you want to use the Astro scaffold I added, install and run it locally:
+
+```bash
+npm install
+npm run dev    # starts dev server (hot reload) — visit http://localhost:3000/tetris
+npm run build  # builds to ./docs ready for GitHub Pages
+```
+
+If you want me to push these changes (create a commit and push to `main`) I can do that for you — tell me and I'll create a clean commit message.
 
 How to restore the custom domain (if you changed your mind)
 
@@ -40,7 +51,7 @@ How to restore the custom domain (if you changed your mind)
 
 Notes & suggestions
 
-- I started a local server in the workspace so you can preview the game at `http://localhost:8000/game`.
-- Next optional improvements I can add: hold-piece, ghost-piece, sound effects, persistent high scores, or a small UI for mobile controls. Pick one and I can implement it.
+- I copied the live game into both `docs/tetris` (immediate Pages content) and `public/tetris` (Astro source). Edit whichever copy you prefer — I recommend using `public/tetris` if you plan to run the Astro dev workflow.
+- Next optional improvements I can add: hold-piece, ghost-piece, sound effects, persistent high scores, or converting the game into an Astro component.
 
 — Changes applied by the workspace assistant
